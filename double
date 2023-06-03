@@ -1,0 +1,659 @@
+import time
+from importlib import reload
+from sqlite3 import time
+from tkinter import ROUND
+from typing import Literal
+from bs4 import BeautifulSoup
+import telebot
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+from turtle import clear
+from time import sleep
+from datetime import datetime, timedelta
+import bd
+import requests
+import re as regEx
+
+
+api_key = '5604629712:AAEI9QUtOcQln8lNOF6HdWo4RUUx3tFbLD0' #ID DO SEU BOT DO BOTFATHER
+chat_id = '-1001492095883'#ID DO GRUPO
+
+bot = telebot.TeleBot(token=api_key)
+
+bot.send_message(chat_id=chat_id, text='''SENHORA BIANCA SEU BOT FOI LIGADO ''')
+
+Options = webdriver.ChromeOptions()
+Options.add_argument('--headless')
+nav = webdriver.Chrome(service=Service(ChromeDriverManager().install()), chrome_options=Options)
+
+
+
+nav.get('https://blaze.com/pt/games/double')
+
+def formatarHora(horaDaAposta):
+                horaFormatada = regEx.sub("^\d|^:|\[|\]|'", "", str(
+                    regEx.findall(r"..:..", str(horaDaAposta))))
+
+                return horaFormatada
+
+def alerta_entradapreto():
+    
+    bd.minuto_da_aposta = horadosinal.strftime("%H:%M")
+    bd.hora = horaatual.strftime("%H:%M")
+    bd.estrategy_name = 'PADRAO 3.0'
+    message_id = bot.send_message(chat_id=chat_id, text=f'''
+🎉👀 ATENÇÃO 🚪🌟
+
+🕰️ Hora da ação: {bd.minuto_da_aposta} ⏰
+⚫️ Sinal preto para agir! ⚫️
+📲 Aguarde a mensagem de confirmação para dar o próximo passo. 📩
+💪 Mantenha a calma e prepare-se para agir com estratégia e precisão! 🚀
+
+
+                         
+                        ''').message_id
+    bd.mensage_ids01 = message_id
+    bd.mensage_delete = True
+    return
+
+def deletaar_entradapreto():
+    if bd.mensage_delete == True:
+        bot.delete_message(chat_id=chat_id, message_id=bd.mensage_ids01)
+        bd.mensage_delete = False
+
+def alerta_entradavermelho():
+    
+    bd.minuto_da_aposta = horadosinal.strftime("%H:%M")
+    bd.hora = horaatual.strftime("%H:%M")
+    bd.estrategy_name = 'PADRAO 2.0'
+    message_id = bot.send_message(chat_id=chat_id, text=f'''
+🎉👀 ATENÇÃO 🚪🌟
+
+🕰️ Hora da ação: {bd.minuto_da_aposta} ⏰
+🔴 Sinal vermelho para agir! 🛑
+📲 Aguarde a mensagem de confirmação para dar o próximo passo. 📩
+💪 Mantenha a calma e prepare-se para agir com estratégia e precisão! 🚀
+                         
+                        ''').message_id
+    bd.mensage_ids0 = message_id
+    bd.mensage_delete = True
+    return
+
+def deletaar_entradavermelho():
+    if bd.mensage_delete == True:
+        bot.delete_message(chat_id=chat_id, message_id=bd.mensage_ids0)
+        bd.mensage_delete = False
+
+def possivel_entrada():
+    message_id = bot.send_message(chat_id=chat_id, text="Atenção atenção possível entrada").message_id
+    bd.mensage_ids = message_id
+    bd.mensage_delete = True
+    return
+
+def deletar_alertas():
+    if bd.mensage_delete == True:
+        bot.delete_message(chat_id=chat_id, message_id=bd.mensage_ids)
+        bd.mensage_delete = False
+
+def ALERT_GALE1(): 
+        message_id = bot.send_message(chat_id, text="Sinto muito te dizer porém nós vamos precisar fazer A nossa primeira reentrada").message_id
+        bd.message_ids1 = message_id
+        bd.mensage_delete1 = True
+        return
+
+def DELET_GALE1():
+        if bd.mensage_delete1 == True:
+            bot.delete_message(chat_id=chat_id, message_id=bd.message_ids1)
+            bd.mensage_delete1 = False
+
+def ALERT_GALE2():
+        message_id = bot.send_message(chat_id, text=" OPA eu sinto muito mas nós vamos ter que fazer a segunda reentrada").message_id
+        bd.message_ids1 = message_id
+        bd.mensage_delete1 = True
+        return
+
+def DELET_GALE2():
+        if bd.mensage_delete1 == True:
+            bot.delete_message(chat_id=chat_id, message_id=bd.message_ids1)
+            bd.mensage_delete1 = False
+
+def qualnum(x):
+
+        if x == '0':
+            return 0
+
+        if x == '1':
+            return 1
+
+        if x == '2':
+            return 2
+
+        if x == '3':
+            return 3
+
+        if x == '4':
+            return 4
+
+        if x == '5':
+            return 5
+
+        if x == '6':
+            return 6
+
+        if x == '7':
+            return 7
+
+        if x == '8':
+            return 8
+
+        if x == '9':
+            return 9
+
+        if x == '10':
+            return 10
+
+        if x == '11':
+            return 11
+
+        if x == '12':
+            return 12
+
+        if x == '13':
+            return 13
+
+        if x == '14':
+            return 14
+
+def qualcor(x):
+
+        if x == '0':
+            return '⚪️'
+
+        if x == '1':
+            return '🔴'
+
+        if x == '2':
+            return '🔴'
+
+        if x == '3':
+            return '🔴'
+
+        if x == '4':
+            return '🔴'
+
+        if x == '5':
+            return '🔴'
+
+        if x == '6':
+            return '🔴'
+
+        if x == '7':
+            return '🔴'
+
+        if x == '8':
+            return '⚫️'
+
+        if x == '9':
+            return '⚫️'
+
+        if x == '10':
+            return '⚫️'
+
+        if x == '11':
+            return '⚫️'
+
+        if x == '12':
+            return '⚫️'
+
+        if x == '13':
+            return '⚫️'
+
+        if x == '14':
+            return '⚫️'
+
+def reset():
+    bd.estrategy_name = 'TRUE'
+    bd.direction_color = 'NULL'
+    bd.analisar = 0
+    bd.gale_atual = 0
+    
+def martingales(): 
+
+    def very_gale(num):
+
+        if num[0:1] > [0] and num[0:1] <= [7] and bd.direction_color == '🔴':#win vermelho
+            if bd.gale_atual == 0:
+                print('🔴SEM GALE✅')
+                bd.win += 1
+                bd.total += 1
+                bd.divisao = bd.win +  bd.gale1 + bd.gale2 
+                if (bd.win +  bd.gale1 + bd.gale2 + bd.loss) != 0:
+                    a = 100 / (bd.win +  bd.gale1 + bd.gale2 + bd.loss) * bd.divisao
+                else:
+                    a = 0
+                bd.porcentagem = (f'{a:,.2f}%')
+                bot.send_message(chat_id, text="✅✅✅✅sem gale")
+                bot.send_message(chat_id=chat_id, text=f'''
+                            
+                            \n 
+👇 Parcial do bot Double 👇
+
+✅ Acertos na mosca: {bd.win}
+✅ Acertos no gale 1: {bd.gale1}
+✅ Acertos no gale 2: {bd.gale2}
+❌ Análises equivocadas: {bd.loss}
+🎯 Porcentagem de acerto: {bd.porcentagem}
+
+🏆 Total de ganhos: {bd.total}
+
+👏 O bot Double está mandando bem! 💰 É hora de continuar apostando com sabedoria e estratégia para maximizar os lucros! 🚀
+
+                            ''')
+                reset()
+                return  
+
+            if bd.gale_atual == 1:
+                print('🔴GALE1✅')
+                bd.gale1 += 1
+                bd.total += 1
+                bd.divisao = bd.win +  bd.gale1 + bd.gale2 
+                if (bd.win +  bd.gale1 + bd.gale2 + bd.loss) != 0:
+                    a = 100 / (bd.win +  bd.gale1 + bd.gale2 + bd.loss) * bd.divisao
+                else:
+                    a = 0
+                bot.send_message(chat_id, text="✅✅✅✅gale1")
+                bot.send_message(chat_id=chat_id, text=f'''
+                            
+                            \n 
+👇 Parcial do bot Double 👇
+
+✅ Acertos na mosca: {bd.win}
+✅ Acertos no gale 1: {bd.gale1}
+✅ Acertos no gale 2: {bd.gale2}
+❌ Análises equivocadas: {bd.loss}
+🎯 Porcentagem de acerto: {bd.porcentagem}
+
+🏆 Total de ganhos: {bd.total}
+
+👏 O bot Double está mandando bem! 💰 É hora de continuar apostando com sabedoria e estratégia para maximizar os lucros! 🚀
+
+                            ''')
+                reset()
+                return  
+
+            if bd.gale_atual == 2:
+                print('🔴GALE2✅')
+                bd.gale2 += 1
+                bd.total += 1
+                bd.divisao = bd.win +  bd.gale1 + bd.gale2 
+                if (bd.win +  bd.gale1 + bd.gale2 + bd.loss) != 0:
+                    a = 100 / (bd.win +  bd.gale1 + bd.gale2 + bd.loss) * bd.divisao
+                else:
+                    a = 0
+                bd.porcentagem = (f'{a:,.2f}%')
+                bot.send_message(chat_id, text="✅✅✅✅gale2")
+                bot.send_message(chat_id=chat_id, text=f'''
+                            
+                            \n 
+👇 Parcial do bot Double 👇
+
+✅ Acertos na mosca: {bd.win}
+✅ Acertos no gale 1: {bd.gale1}
+✅ Acertos no gale 2: {bd.gale2}
+❌ Análises equivocadas: {bd.loss}
+🎯 Porcentagem de acerto: {bd.porcentagem}
+
+🏆 Total de ganhos: {bd.total}
+
+👏 O bot Double está mandando bem! 💰 É hora de continuar apostando com sabedoria e estratégia para maximizar os lucros! 🚀
+
+                            ''')
+                reset()
+                return        
+        
+        if num[0:1] >= [8] and num[0:1] <= [14] and bd.direction_color == '⚫️':#win preto
+            
+            if bd.gale_atual == 0:
+                print('⚫️SEM GALE✅')
+                bd.win += 1
+                bd.total += 1
+                bd.divisao = bd.win +  bd.gale1 + bd.gale2 
+                if (bd.win +  bd.gale1 + bd.gale2 + bd.loss) != 0:
+                    a = 100 / (bd.win +  bd.gale1 + bd.gale2 + bd.loss) * bd.divisao
+                else:
+                    a = 0
+                bd.porcentagem = (f'{a:,.2f}%')
+                bot.send_message(chat_id, text="✅✅✅✅sem gale")
+                bot.send_message(chat_id=chat_id, text=f'''
+                            
+                            \n 
+👇 Parcial do bot Double 👇
+
+✅ Acertos na mosca: {bd.win}
+✅ Acertos no gale 1: {bd.gale1}
+✅ Acertos no gale 2: {bd.gale2}
+❌ Análises equivocadas: {bd.loss}
+🎯 Porcentagem de acerto: {bd.porcentagem}
+
+🏆 Total de ganhos: {bd.total}
+
+👏 O bot Double está mandando bem! 💰 É hora de continuar apostando com sabedoria e estratégia para maximizar os lucros! 🚀
+
+                            ''')
+                reset()
+                return  
+
+            if bd.gale_atual == 1:
+                print('⚫️GALE1✅')
+                bd.gale1 += 1
+                bd.total += 1
+                bd.divisao = bd.win +  bd.gale1 + bd.gale2 
+                if (bd.win +  bd.gale1 + bd.gale2 + bd.loss) != 0:
+                    a = 100 / (bd.win +  bd.gale1 + bd.gale2 + bd.loss) * bd.divisao
+                else:
+                    a = 0
+                bd.porcentagem = (f'{a:,.2f}%')
+                bot.send_message(chat_id, text="✅✅✅✅gale1")
+                bot.send_message(chat_id=chat_id, text=f'''
+                            
+                            \n 
+👇 Parcial do bot Double 👇
+
+✅ Acertos na mosca: {bd.win}
+✅ Acertos no gale 1: {bd.gale1}
+✅ Acertos no gale 2: {bd.gale2}
+❌ Análises equivocadas: {bd.loss}
+🎯 Porcentagem de acerto: {bd.porcentagem}
+
+🏆 Total de ganhos: {bd.total}
+
+👏 O bot Double está mandando bem! 💰 É hora de continuar apostando com sabedoria e estratégia para maximizar os lucros! 🚀
+
+                            ''')
+                reset()
+                return     
+
+            if bd.gale_atual == 2:
+                print('⚫️GALE2✅')
+                bd.gale2 += 1
+                bd.total += 1
+                bd.divisao = bd.win +  bd.gale1 + bd.gale2 
+                if (bd.win +  bd.gale1 + bd.gale2 + bd.loss) != 0:
+                    a = 100 / (bd.win +  bd.gale1 + bd.gale2 + bd.loss) * bd.divisao
+                else:
+                    a = 0
+                bd.porcentagem = (f'{a:,.2f}%')
+                bot.send_message(chat_id, text="✅✅✅✅gale2")
+                bot.send_message(chat_id=chat_id, text=f'''
+                            
+                            \n 
+👇 Parcial do bot Double 👇
+
+✅ Acertos na mosca: {bd.win}
+✅ Acertos no gale 1: {bd.gale1}
+✅ Acertos no gale 2: {bd.gale2}
+❌ Análises equivocadas: {bd.loss}
+🎯 Porcentagem de acerto: {bd.porcentagem}
+
+🏆 Total de ganhos: {bd.total}
+
+👏 O bot Double está mandando bem! 💰 É hora de continuar apostando com sabedoria e estratégia para maximizar os lucros! 🚀
+
+                            ''')
+                reset()
+                return  
+
+        if num[0:1] >= [8] and num[0:1] <= [14] and bd.direction_color == '🔴':#loss vermelho
+            
+            if bd.gale_atual == 0:
+                print('NÃO FOI NESSA COR ❌ ')
+                bd.gale_atual += 1
+                ALERT_GALE1()
+                time.sleep(5)
+                DELET_GALE1()
+                return           
+
+            if bd.gale_atual == 1:
+                print('NÃO FOI NESSA COR G1❌')
+                bd.gale_atual += 1
+                ALERT_GALE2()
+                time.sleep(5)
+                DELET_GALE2()
+                return
+
+            if bd.gale_atual == 2:
+                print('NÃO FOI NESSA COR❌LOSS❌')
+                bd.loss += 1
+                b = bd.win +  bd.gale1 + bd.gale2 
+                if (bd.win +  bd.gale1 + bd.gale2 + bd.loss) != 0:
+                    a = 100 / (bd.win +  bd.gale1 + bd.gale2 + bd.loss) * b
+                else:
+                    a = 0
+                bd.porcentagem = (f'{a:,.2f}%')
+                bot.send_message(chat_id, text="⭕️⭕️⭕️loss")
+                bot.send_message(chat_id=chat_id, text=f'''
+                        
+                        \n 
+👇 Parcial do bot Double 👇
+
+✅ Acertos na mosca: {bd.win}
+✅ Acertos no gale 1: {bd.gale1}
+✅ Acertos no gale 2: {bd.gale2}
+❌ Análises equivocadas: {bd.loss}
+🎯 Porcentagem de acerto: {bd.porcentagem}
+
+🏆 Total de ganhos: {bd.total}
+
+👏 O bot Double está mandando bem! 💰 É hora de continuar apostando com sabedoria e estratégia para maximizar os lucros! 🚀
+
+                        ''')
+                reset()
+                return
+
+        if num[0:1] > [0] and num[0:1] <= [7] and bd.direction_color == '⚫️':#loss preto
+            
+            if bd.gale_atual == 0:
+                print('NÃO FOI NESSA COR ❌')
+                bd.gale_atual += 1
+                ALERT_GALE1()
+                time.sleep(5)
+                DELET_GALE1()
+                return      
+
+            if bd.gale_atual == 1:
+                print('NÃO FOI NESSA COR G1❌')
+                bd.gale_atual += 1
+                ALERT_GALE2()
+                time.sleep(5)
+                DELET_GALE2()
+                
+                return
+
+            if bd.gale_atual == 2:
+                print('NÃO FOI NESSA COR G2❌LOSS❌')
+                bd.loss += 1
+                b = bd.win +  bd.gale1 + bd.gale2 
+                if (bd.win +  bd.gale1 + bd.gale2 + bd.loss) != 0:
+                    a = 100 / (bd.win +  bd.gale1 + bd.gale2 + bd.loss) * b
+                else:
+                    a = 0
+                bd.porcentagem = (f'{a:,.2f}%')
+                bot.send_message(chat_id, text="⭕️⭕️⭕️⭕️⭕️⭕️⭕️⭕️⭕️⭕️⭕️⭕️⭕️⭕️⭕️⭕️⭕️⭕️⭕️⭕️")
+                bot.send_message(chat_id=chat_id, text=f'''
+                        
+                        \n 
+👇 Parcial do bot Double 👇
+
+✅ Acertos na mosca: {bd.win}
+✅ Acertos no gale 1: {bd.gale1}
+✅ Acertos no gale 2: {bd.gale2}
+❌ Análises equivocadas: {bd.loss}
+🎯 Porcentagem de acerto: {bd.porcentagem}
+
+🏆 Total de ganhos: {bd.total}
+
+👏 O bot Double está mandando bem! 💰 É hora de continuar apostando com sabedoria e estratégia para maximizar os lucros! 🚀
+
+                        ''')
+                reset()
+                return
+
+    very_gale(bd.finalnum)
+    return
+    
+
+while True:
+
+    try:
+        resulROOL = nav.find_element(By.XPATH, '//*[@id="roulette-timer"]/div[1]').text
+    except NameError as erro:
+        continue
+    except Exception as erro:
+        continue 
+
+    
+
+    bd.analisar_open = 0
+    if resulROOL == 'Girando...':
+        bd.analisar_open = 1
+        print('Girando...')
+        time.sleep(13)
+        c = nav.page_source
+        bd.resultsDouble.clear()
+    
+        soup = BeautifulSoup(c, 'html.parser')
+        go = soup.find('div', class_="entries main")
+        for i in go:
+            if i.getText():
+                bd.resultsDouble.append(i.getText())
+            else:
+                bd.resultsDouble.append('0')    
+
+        bd.resultsDouble = bd.resultsDouble[:-1] 
+        print(bd.resultsDouble)
+
+        if bd.analisar_open == 1:
+
+            default = bd.resultsDouble[0:16] 
+            
+            mapeando = map(qualnum, default)
+            mapeando2 = map(qualcor, default)
+            bd.finalnum = list(mapeando)
+            bd.finalcor = list(mapeando2)
+            print(bd.finalcor)
+            #print(bd.finalnum[0:1])
+            depois_nu = bd.finalnum[0:1][0]
+            depois_cor = bd.finalcor[0:1][0]
+            
+
+                    
+       
+        
+        if bd.estrategy_name == 'TRUE' or bd.estrategy_name == 'PADRAO 2.0':
+            horadosinal = datetime.now() + timedelta(minutes=(5))
+            horaatual = datetime.now()
+            def CHECK_VERSION(num):
+                
+
+                if bd.analisar == 0:#entradas
+
+                    if num[0:1] == ['⚫️']:
+                        print('🎯ALERTA ENVIADO✅')
+                        bd.analisar = 1
+                        alerta_entradavermelho()
+                        time.sleep(250) 
+                        deletaar_entradavermelho()
+
+                        time.sleep(10) 
+                        return
+                if bd.analisar == 1:#entradas
+
+                            print('🎯ENTRADA ENVIADA✅')
+                            bd.minuto_da_aposta = horadosinal.strftime("%H:%M")
+                            bd.hora = horaatual.strftime("%H:%M")
+                            bd.estrategy_name = 'PADRAO 2.0'
+                            bd.direction_color = '🔴'  
+                            bd.analisar += 1
+                            def button_link():
+
+                                markup = InlineKeyboardMarkup()
+
+                                markup.row_width = 2
+
+                                markup.add(InlineKeyboardButton(text="🎲 Cadastre-se na Blaze 🎲",url="https://blaze.com/r/blaze.com/r/XZ6GM"))
+
+                                return markup
+                            bot.send_message(chat_id=chat_id, text=(f'''
+🎉 Ei psiu ainda está aí! 🚀
+⏩ Bora apostar no vermelho: 🔴
+⏩ Depois do número: {depois_nu}
+⚠️ Só dá pra Insistir 2 vezes Hein ⚠️
+🍀 Boa sorte e aposta com sabedoria, beleza? 💰
+                            
+                            '''),
+                            reply_markup=button_link())
+                            return
+
+                
+                elif bd.analisar == 2:
+                    martingales()
+                    return                                                                     
+            CHECK_VERSION(bd.finalcor) 
+        
+        if bd.estrategy_name == 'TRUE' or bd.estrategy_name == 'PADRAO 3.0':
+            horadosinal = datetime.now() + timedelta(minutes=(5))
+            horaatual = datetime.now()
+            def CHECK_VERSION(num):
+                
+
+                if bd.analisar == 0:#entradas
+
+                    if num[0:1] == ['🔴']:
+                        print('🎯ALERTA ENVIADO✅')
+                        bd.analisar = 1
+                        alerta_entradapreto()
+                        time.sleep(250)    
+                        deletaar_entradapreto()
+            
+                        time.sleep(10) 
+                        return
+                if bd.analisar == 1:#entradas
+
+                            print('🎯ENTRADA ENVIADA✅')
+                            bd.minuto_da_aposta = horadosinal.strftime("%H:%M")
+                            bd.hora = horaatual.strftime("%H:%M")
+                            bd.estrategy_name = 'PADRAO 3.0'
+                            bd.direction_color = '⚫️'
+                            bd.analisar += 1
+                            def button_link():
+
+                                markup = InlineKeyboardMarkup()
+
+                                markup.row_width = 2
+
+                                markup.add(InlineKeyboardButton(text="🤖 Quer automatizar esse bot? 🤖",url="https://wa.me/5553991582808"))
+
+                                return markup
+                            bot.send_message(chat_id=chat_id, text=(f'''
+🎉 Ei psiu ainda está aí! 🚀
+⏩ Bora apostar no preto: ⚫️
+⏩ Depois do número: {depois_nu}
+⚠️ Só dá pra Insistir 2 vezes Hein ⚠️
+🍀 Boa sorte e aposta com sabedoria, beleza? 💰
+                            
+                            '''),
+                            reply_markup=button_link())
+                            
+                            return
+                
+                elif bd.analisar == 2:
+                    martingales()
+                    return                                                                     
+            CHECK_VERSION(bd.finalcor) 
+        
+      
